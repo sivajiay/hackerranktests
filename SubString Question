@@ -1,0 +1,46 @@
+package com.company;
+
+import java.util.Scanner;
+
+/**
+ * Sivaji *
+ *
+ */
+public class SubString {
+    public static void main(String args[]){
+        Scanner sc = new Scanner(System.in);
+        String s =sc.next();
+        String smallest = "";
+        String largest = "";
+        // 'smallest' must be the lexicographically smallest substring of length 'k'
+        // 'largest' must be the lexicographically largest substring of length 'k'
+        int k=3;
+        String comTemp = "";
+        largest = smallest = s.substring(0,k);
+        System.out.println(s.length());
+        if(k< s.length()){
+            for(int i=0; i<=s.length()-k;i++){
+                String comp = s.substring(i,i+k);
+                if(comp.compareTo(comTemp) < 0){
+                    comTemp =comp;
+                    if(comp.compareTo(smallest) < 0){
+                        smallest =comp;
+                    }else if(comp.compareTo(smallest) > 0){
+                        if(comp.compareTo(largest)>0) {
+                            largest = comp;
+                        }
+                    }
+                }else if(comp.compareTo(comTemp)>0){
+                    comTemp =comp;
+                    if(comp.compareTo(largest) > 0){
+                        largest =comp;
+                    }
+                }
+            }
+        }
+
+        System.out.println("Smallest:"+smallest);
+        System.out.println("Largest::"+largest);
+
+    }
+}
